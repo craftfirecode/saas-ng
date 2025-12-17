@@ -1,0 +1,72 @@
+@if (ready() && user) {
+  <div>
+    <nav>
+      <ul>
+        <li>
+          <a routerLink="/protected">Home</a>
+        </li>
+        <li>
+          <a routerLink="/protected/settings">Settings</a>
+        </li>
+        <li>
+          <button (click)="authLogOut()">LogOut</button>
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <ul>
+        @for (folder of folder.folderList(); track folder.id) {
+          <li>{{ folder.name }}</li>
+        }
+      </ul>
+      <div ngAccordionGroup class="basic-accordion" [multiExpandable]="false">
+        <!-- AC1 -->
+        <h3 ngAccordionTrigger
+            panelId="q1"
+            #trigger1="ngAccordionTrigger"
+            [expanded]="true">
+          Accordion 1
+        </h3>
+        <div ngAccordionPanel panelId="q1">
+          <ng-template ngAccordionContent>
+            Use <code>aria-expanded</code> on the button element. Set it to "true" when the content
+            panel is visible and "false" when the content is hidden. This is a crucial state indicator
+            for screen reader users.
+          </ng-template>
+        </div>
+        <!-- AC2 -->
+        <h3 ngAccordionTrigger
+            panelId="q2"
+            #trigger1="ngAccordionTrigger"
+            [expanded]="false">
+          Accordion 2
+        </h3>
+        <div ngAccordionPanel panelId="q2">
+          <ng-template ngAccordionContent>
+            Use <code>aria-expanded</code> on the button element. Set it to "true" when the content
+            panel is visible and "false" when the content is hidden. This is a crucial state indicator
+            for screen reader users.
+          </ng-template>
+        </div>
+        <!-- AC3 -->
+        <h3 ngAccordionTrigger
+            panelId="q3"
+            #trigger1="ngAccordionTrigger"
+            [expanded]="false">
+          Accordion 3
+        </h3>
+        <div ngAccordionPanel panelId="q3">
+          <ng-template ngAccordionContent>
+            Use <code>aria-expanded</code> on the button element. Set it to "true" when the content
+            panel is visible and "false" when the content is hidden. This is a crucial state indicator
+            for screen reader users.
+          </ng-template>
+        </div>
+      </div>
+    </main>
+    <router-outlet/>
+  </div>
+
+} @else {
+  <router-outlet/>
+}
